@@ -21,18 +21,20 @@ export class CheckService implements CheckServiceUseCase {
       if (!req.ok) {
         throw new Error(`Error on check service ${url}`);
       }
-      const log = new LogEnitity(
-        LogSeveritylevel.low,
-        `Service ${url} is working fine`
-      );
+      const log = new LogEnitity({
+        level: LogSeveritylevel.low,
+        message: `Service ${url} is working fine`,
+        origin: "check-service.ts",
+      });
       await this.logRepository.saveLog(log);
       this.successCallback && this.successCallback();
       return true;
     } catch (error) {
-      const log = new LogEnitity(
-        LogSeveritylevel.high,
-        `Service ${url} is not working. ${error}`
-      );
+      const log = new LogEnitity({
+        level: LogSeveritylevel.high,
+        message: `Service ${url} is not working. ${error}`,
+        origin: "check-service.ts",
+      });
       await this.logRepository.saveLog(log);
       this.errorCallback && this.errorCallback(`${error}`);
       return false;
