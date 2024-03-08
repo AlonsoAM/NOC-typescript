@@ -1,0 +1,5 @@
+{"level":"low","message":"Service http://www.google.com/ is working fine","createdAt":"2024-03-08T16:20:20.342Z","origin":"CheckService"}
+{"level":"low","message":"Service http://www.google.com/ is working fine","createdAt":"2024-03-08T16:20:25.143Z","origin":"CheckService"}
+{"level":"low","message":"Service http://www.google.com/ is working fine","createdAt":"2024-03-08T16:20:30.385Z","origin":"CheckService"}
+{"level":"low","message":"Email sent to alonso.amoreno@live.com","createdAt":"2024-03-08T17:14:29.195Z","origin":"EmailService"}
+{"level":"low","message":"Email sent to alonso.amoreno@live.com","createdAt":"2024-03-08T17:28:53.721Z","origin":"send-email-logs.ts"}
