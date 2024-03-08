@@ -42,7 +42,25 @@ export class FileSystemDatasource extends LogDatasource {
     }
   }
 
+  private getLogsFromFile = (logPath: string): LogEnitity[] => {
+    const content = fs.readFileSync(logPath, "utf-8");
+    const logsAsJson = content.split("\n").map(LogEnitity.fromJson);
+    // const logsAsJson = content
+    //   .split("\n")
+    //   .map((log) => LogEnitity.fromJson(log));
+    return logsAsJson;
+  };
+
   public async getLogs(severityLevel: LogSeveritylevel): Promise<LogEnitity[]> {
-    throw new Error("Method not implemented.");
+    switch (severityLevel) {
+      case LogSeveritylevel.low:
+        return this.getLogsFromFile(this.allLogsPath);
+      case LogSeveritylevel.medium:
+        return this.getLogsFromFile(this.mediumLogsPath);
+      case LogSeveritylevel.high:
+        return this.getLogsFromFile(this.highLogsPath);
+      default:
+        throw new Error("Invalid severity level");
+    }
   }
 }
